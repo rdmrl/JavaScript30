@@ -59,6 +59,33 @@
 
 <script>
 
+(function() {
+  'use strict';
+
+  // Handle the key press event.
+  document.addEventListener('keypress', event => {
+    // Find the key with the matching keycode.
+    const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`);
+    if (keyEl) {
+      keyEl.classList.add('playing');
+      const audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+      if (audioEl) {
+        audioEl.play();
+      }
+    }
+  });
+
+  // Handle the key up/release event.
+  document.addEventListener('keyup', event => {
+    // Find the key with the matching keycode.
+    const keyEl = document.querySelector(`div[data-key="${event.keyCode}"]`);
+    if (keyEl) {
+      keyEl.classList.remove('playing');
+    }
+  });
+
+})();
+
 </script>
 
 
